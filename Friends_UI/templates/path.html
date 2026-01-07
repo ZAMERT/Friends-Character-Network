@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Shortest Path{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Find Shortest Path Between Two Characters</h2>
+
+    <a href="/" class="btn btn-secondary mb-3">Back to Home</a>
+
+    <div class="card shadow p-4">
+
+        <!-- Input Form -->
+        <form action="/path" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Start Character:</label>
+                <input type="text" name="start" class="form-control" placeholder="e.g. Joey">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">End Character:</label>
+                <input type="text" name="end" class="form-control" placeholder="e.g. Ross">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Find Path</button>
+        </form>
+
+        <!-- Show result -->
+        {% if result is defined %}
+            <div class="mt-4">
+                <h4>Result:</h4>
+                {% if result %}
+                    <div class="alert alert-info">
+                        {{ result | join(" → ") }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        Sorry! No path found.
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

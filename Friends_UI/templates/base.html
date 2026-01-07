@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Friends Network{% endblock %}</title>
+        <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        {% block head %}{% endblock %}
+    </head>
+
+    <body class="bg-light">
+
+        <!-- NavBar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3">
+            <a class="navbar-brand fw-bold fs-4 text-white" href="/">Friends Network</a>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold fs-5" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold fs-5" href="/search">Search Character</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold fs-5" href="/path">Shortest Path</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold fs-5" href="/rankings">Centrality</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold fs-5" href="/graph">Graph</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white fw-semibold fs-5" 
+                        href="#"
+                        id="seasonDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown">
+                            Season
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/season?season=all">All Seasons</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        {% for season_num in range(1, 11) %}
+                            <li>
+                                <a class="dropdown-item" href="/season?season={{ season_num }}">
+                                    Season {{ season_num }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li> 
+            </ul>
+        </div>
+        </nav>
+        <!-- Page Content -->
+        <div class="container mt-5">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

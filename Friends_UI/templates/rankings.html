@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Centrality{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Centrality</h2>
+
+    <a href="/" class="btn btn-secondary mb-3">Back to Home</a>
+
+    <div class="card shadow p-4">
+
+        <form action="/rankings" method="POST">
+            <label class="form-label">How many top characters to show?</label>
+            <input type="number" name="k" class="form-control" min="1" value="5">
+
+            <button type="submit" class="btn btn-info w-100 mt-3">
+                Show Top Rankings
+            </button>
+        </form>
+
+        {% if rankings %}
+            <div class="mt-4">
+
+                <!-- Top Degree -->
+                <h4>🔹 Top Degree</h4>
+                <ul>
+                {% for n in rankings.degree %}
+                    <li>{{ n.name }} — Degree: {{ n.degree }}</li>
+                {% endfor %}
+                </ul>
+
+                <!-- Top Weighted Degree -->
+                <h4 class="mt-4">🔹 Top Weighted Degree</h4>
+                <ul>
+                {% for n in rankings.weighted %}
+                    <li>{{ n.name }} — Weighted Degree: {{ n.weighted_degree }}</li>
+                {% endfor %}
+                </ul>
+
+                <!-- Top Popularity -->
+                <h4 class="mt-4">🔹 Top Popularity (Avg Episode Score)</h4>
+                <ul>
+                {% for n in rankings.popularity %}
+                    <li>{{ n.name }} — Avg Score: {{ "%.2f"|format(n.avg_popularity()) }}</li>
+                {% endfor %}
+                </ul>
+
+                <!-- Top Effective Popularity -->
+                <h4 class="mt-4">🔹 Top Effective Popularity</h4>
+                <ul>
+                {% for n in rankings.effective %}
+                    <li>{{ n.name }} — Effective Avg: {{ "%.2f"|format(n.avg_effective_popularity()) }}</li>
+                {% endfor %}
+                </ul>
+
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

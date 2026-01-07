@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">The Network of Friends</h1>
+
+    <img
+        src="{{ url_for('static', filename='friends.jpg') }}"
+        alt="Friends Cast"
+        class="img-fluid rounded shadow"
+        style="max-height: 400px;"
+    >
+
+    <p class="mt-4 text-muted">
+        This project analyzes character relationships and popularity 
+        patterns in the TV shows <em>Friends</em> using a custom built graph systems.
+    </p>
+</div>
+{% endblock %}
