@@ -19,6 +19,8 @@ This project is developed as the final project for SI507 at the University of Mi
 - End-to-end pipeline: raw scripts → structured data → graph → analysis. 
 - Interactive exploration via CLI and web UI. 
 
+--------------------
+
 ## Project Goals
 
 - Build a graph that captures **who appears with whom** across the entire series.
@@ -87,6 +89,8 @@ For efficiency, intermediate results are cached locally as JSON files. These fil
 ``` bash
 python JSONProcessing.py
 ```
+
+--------------------
 
 ## User Interactions
 
